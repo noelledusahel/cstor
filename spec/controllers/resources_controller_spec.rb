@@ -21,4 +21,21 @@ describe ResourcesController do
 
   end
 
+  describe "GET #show" do
+    it "responds with status code 200" do
+      get :show, { id: resource.id }
+      expect(response).to have_http_status 200
+    end
+
+    it "assigns the correct resource as @resource" do
+      get :show, { id: resource.id }
+      expect(assigns(:resource)).to eq(resource)
+    end
+
+    it "renders the :show template" do
+      get :show, { id: resource.id }
+      expect(response).to render_template(:show)
+    end
+  end
+
 end
