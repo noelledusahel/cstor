@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   has_many :liked_resources, through: :likes, source: :resource
 
   has_secure_password
+
+  validates :username, :email, presence: true
 end
