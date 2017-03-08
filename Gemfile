@@ -30,6 +30,11 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 # gem 'pry-byebug'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara', "~> 2.5"
+end
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
