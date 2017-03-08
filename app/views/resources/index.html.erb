@@ -2,7 +2,11 @@
 
 <ul class="all-resources">
 <% @resources.each do |resource| %>
-<p><h2> <%= resource.title %></h2> </p>
+<p>
+  <h2>
+    <a href="/resources/<%= resource.id%>"><%= resource.title %></a>
+  </h2>
+</p>
 <p> <%= resource.abstract %> </p>
 <p> <em><%= resource.teacher.username %></em> </p>
 <% end %>
