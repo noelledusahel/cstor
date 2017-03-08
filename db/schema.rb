@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170308212041) do
     t.string   "abstract"
     t.boolean  "teacher_only"
     t.integer  "teacher_id"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
