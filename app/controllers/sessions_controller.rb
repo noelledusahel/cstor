@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email])
     if user && user.authenticate(params[:session][:password])
-      session[:user_id] = user.id
+      set_user(user)
 
       redirect_to resources_path
     else
