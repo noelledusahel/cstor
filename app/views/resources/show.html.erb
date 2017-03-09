@@ -1,8 +1,14 @@
-<p> <%= @resource.title %> </p>
-<p> <%= @resource.abstract %> </p>
+<h1> <%= @resource.title.capitalize %> </h1>
+<% @tags.each do |tag| %>
+<button><%= link_to tag.name, tag_path(tag) %></button>
+<% end %>
 <p>
-  <a href="<%= @resource.url %>"> Click Here </a>
+  <b>Abstract:</b><br>
+  <%= @resource.abstract %> </p>
+<p>
+  <b>Link:</b><br>
+  <a href="<%= @resource.url %>"><%= @resource.url%> </a>
 </p>
-<p> <em><%= @resource.teacher.username %></em> </p>
+<p> <b>Author:</b> <em><%= @resource.teacher.username %></em> </p>
 
 <p> added on: <%=@resource.created_at.strftime("%m-%d-%Y")  %></p>
