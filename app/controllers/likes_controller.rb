@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = Like.new(liker_id: current_user.id, resource_id: params[:id])
+    @like = Like.new(liker_id: current_user.id, resource_id: params[:resource_id])
     if @like.save
       redirect_to resources_path
     else
@@ -13,8 +13,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by(like_params)
+    @like = Like.find_by(liker_id: current_user.id, resource_id: params[:resource_id])
     @like.destroy
+    redirect_to resources_path
   end
 
 

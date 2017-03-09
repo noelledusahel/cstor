@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.set_user
+      set_user(@user)
       redirect_to resources_path
     else
       render 'new'

@@ -9,9 +9,21 @@
   </p>
   <p> <%= resource.abstract %> </p>
   <p> <em><%= resource.teacher.username %></em> </p>
-    <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
-    <%= f.submit %>
-    <% end %>
+
+  <% if !resource.likers.include?(current_user)%>
+
+  <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
+  <%= f.submit %>
+  <% end %>
+
+  <% else %>
+
+  <% if resource.like_by_user(current_user) != nil %>
+  <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
+  <%= f.submit %>
+  <% end %>
+  <% end %>
+  <% end %>
   <% end %>
 </ul>
-j
+
