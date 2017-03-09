@@ -6,6 +6,7 @@ class ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
     @tags = @resource.tags
+    @likes = @resource.likes
   end
 
   def new
