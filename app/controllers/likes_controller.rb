@@ -3,8 +3,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    p like_params
-    @like = Like.new(like_params)
+    @like = Like.new(liker_id: current_user.id, resource_id: params[:id])
     if @like.save
       redirect_to resources_path
     else
@@ -18,10 +17,5 @@ class LikesController < ApplicationController
     @like.destroy
   end
 
-  private
-  def like_params
-    liker_id = current_user.id
-    resource_id = params[:resource_id]
-    params.require(:like).permit(:liker_id, :resource_id)
-  end
+
 end
