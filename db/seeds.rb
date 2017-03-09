@@ -7,11 +7,11 @@ end
 end
 
 7.times do
-  Resource.create!({title: Faker::Hacker.noun, abstract: Faker::Hacker.say_something_smart, teacher_only: false, teacher_id: Faker::Number.between(6, 8), url: "https://www.google.com/"})
+  Resource.create!({title: Faker::Hacker.noun, abstract: Faker::Hacker.say_something_smart, teacher_only: false, teacher_id: (rand(2)+5), url: "https://www.google.com/"})
 end
 
 4.times do
-  Resource.create!({title: Faker::Hacker.adjective, abstract: Faker::Hacker.say_something_smart, teacher_only: true, teacher_id: Faker::Number.between(6, 8), url: "https://www.google.com/"})
+  Resource.create!({title: Faker::Hacker.adjective, abstract: Faker::Hacker.say_something_smart, teacher_only: true, teacher_id: (rand(2)+5), url: "https://www.google.com/"})
 end
 
 10.times do

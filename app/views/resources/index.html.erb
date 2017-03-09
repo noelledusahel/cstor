@@ -1,5 +1,10 @@
 <h1> Cstor </h1>
-<%= link_to 'Create New Resource', new_resource_path %>
+
+Tags:<%= render partial: "tags/tagmenu" %><br><br>
+
+<% if current_user && current_user.admin %>
+  <%= link_to 'Create New Resource', new_resource_path %>
+<% end %>
 <ul class="all-resources">
   <% @resources.each do |resource| %>
   <p>
@@ -14,4 +19,4 @@
     <% end %>
   <% end %>
 </ul>
-j
+
