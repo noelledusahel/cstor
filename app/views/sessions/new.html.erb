@@ -1,0 +1,7 @@
+<h1>Login to Cstor</h1>
+<%= form_for :user do |f| %>
+  username: <%= f.text_field :username %><br>
+  email: <%= f.text_field :email %><br>
+  admin?: <%= f.check_box :admin %><br>
+<%= f.submit %>
+<% end %>
