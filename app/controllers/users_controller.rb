@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    redirect_to resources_path
+    # redirect_to resources_path
   end
 
   def show
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    p @user
     if @user.save
       redirect_to new_session_path
     else
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:username, :email, :password)
   end
 
   def find_user
