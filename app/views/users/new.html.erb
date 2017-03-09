@@ -1,9 +1,12 @@
 <h1>Create an Account with Cstor</h1>
 
-<%= form_for :user do |f| %>
-  username: <%= f.text_field :username %><br>
-  email: <%= f.text_field :email %><br>
-  password: <%= f.text_field :password %><br>
-  admin?: <%= f.check_box :admin %><br>
-<%= f.submit %>
-<% end %>
+<div class='container'>
+  <%= form_for :user, url: '/users' do |f| %>
+    username: <%= f.text_field :username %><br>
+    email: <%= f.text_field :email %><br>
+    password: <%= f.text_field :password %><br>
+    <%= hidden_field_tag :admin, '' %>
+    admin?: <%= check_box_tag :admin, checked = true %><br>
+  <%= f.submit "Click me!" %>
+  <% end %>
+</div>
