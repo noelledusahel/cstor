@@ -23,7 +23,13 @@ class ResourcesController < ApplicationController
     end
   end
 
-
+  def destroy
+    if current_user.admin == true
+      @resource = Resource.find(params[:id])
+      @resource.destroy
+    end
+    redirect_to resources_path
+  end
 
   private
 

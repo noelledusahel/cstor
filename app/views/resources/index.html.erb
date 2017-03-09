@@ -13,14 +13,14 @@
   <% if !resource.likers.include?(current_user)%>
 
   <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
-  <%= f.submit %>
+  <%= f.submit "Like" %>
   <% end %>
 
   <% else %>
 
   <% if resource.like_by_user(current_user) != nil %>
   <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
-  <%= f.submit %>
+  <%= f.submit "Unlike" %>
   <% end %>
   <% end %>
   <% end %>

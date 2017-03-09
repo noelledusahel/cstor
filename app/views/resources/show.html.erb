@@ -5,10 +5,14 @@
 <p>
   <b>Abstract:</b><br>
   <%= @resource.abstract %> </p>
-<p>
-  <b>Link:</b><br>
-  <a href="<%= @resource.url %>"><%= @resource.url%> </a>
-</p>
-<p> <b>Author:</b> <em><%= @resource.teacher.username %></em> </p>
+  <p>
+    <b>Link:</b><br>
+    <a href="<%= @resource.url %>"><%= @resource.url%> </a>
+  </p>
+  <p> <b>Author:</b> <em><%= @resource.teacher.username %></em> </p>
 
-<p> added on: <%=@resource.created_at.strftime("%m-%d-%Y")  %></p>
+  <p> added on: <%=@resource.created_at.strftime("%m-%d-%Y")  %></p>
+
+  <%= form_for @resource, method: :delete do |f| %>
+  <%= f.submit "Delete" %>
+  <% end %>
