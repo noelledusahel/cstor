@@ -1,7 +1,11 @@
 language: ruby
 rvm:
-  - 1.9.3
-matrix:
-  include:
-    - rvm: 2.0.0
-      gemfile: gemfiles/2.0.0-Gemfile
+  - 2.0.0
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - postgresql -e 'create database '
