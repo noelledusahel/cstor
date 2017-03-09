@@ -1,0 +1,9 @@
+<h1>Create an Account with Cstor</h1>
+
+<%= form_for :user do |f| %>
+  username: <%= f.text_field :username %><br>
+  email: <%= f.text_field :email %><br>
+  password: <%= f.text_field :password %><br>
+  admin?: <%= f.check_box :admin %><br>
+<%= f.submit %>
+<% end %>
