@@ -10,7 +10,7 @@
   <nav>
 
     <% if logged_in? %>
-      <h3><%=  current_user.username %></h3>
+      <h3>Welcome, <%=  current_user.username %></h3>
       <%= link_to "logout", session_path(current_user.id), method: :delete %>
     <% else %>
       <li style="list-style:none"> <%= link_to "Log In", new_session_path %> </li>

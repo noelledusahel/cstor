@@ -10,13 +10,23 @@ class ResourcesController < ApplicationController
   end
 
   def new
-    @resource = Resource.new
+    if !current_user.admin
+      redirect_to resources_path
+    end
   end
 
   def create
-    @resource = Resource.new(resource_params)
+    @resource = current_user.resources.new(resource_params)
+    tags = tag_params[:tag].split(',').map! {|tag| tag.lstrip}
+    tags.each do |tag|
+      if Tag.find_by(name: tag)
+        @resource.tags << Tag.find_by(name: tag)
+      else
+        @resource.tags << Tag.create(name: tag)
+      end
+    end
 
-    if @resource.save
+    if @resource.save && current_user.admin
       redirect_to @resource, notice: "Your Resource was a success!"
     else
       render :new, status: 400
@@ -38,6 +48,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
     @resource.destroy
   end
+
   redirect_to resources_path
 end
 
@@ -46,4 +57,9 @@ private
 def resource_params
   params.require(:resource).permit(:title, :abstract, :url, :teacher_only)
 end
+  
+def tag_params
+  params.require(:resource).permit(:tag)
+end
+
 end
