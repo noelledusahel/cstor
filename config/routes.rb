@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  # resources :likes, only: [:new, :create, :destroy]
-
-  post '/resources/:id/likes', to: 'likes#create'
+  resources :resources do
+    resources :likes, only: [:create, :destroy]
+  end
 
   get '/4XuibdvyYYkaulCUp2CN', to: 'users#admin_new'
   post '/4XuibdvyYYkaulCUp2CN', to: 'users#admin_create'
