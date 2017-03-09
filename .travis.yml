@@ -1,7 +1,3 @@
 language: ruby
 rvm:
-  - 1.9.3
-matrix:
-  include:
-    - rvm: 2.0.0
-      gemfile: gemfiles/2.0.0-Gemfile
+  - 2.0.0
