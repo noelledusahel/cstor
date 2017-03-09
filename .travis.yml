@@ -3,7 +3,7 @@ rvm:
   - 2.0.0
 postgres:
   adapter: postgresql
-  database: myapp_test
+  database: cstor_test
   username: postgres
 env:
   - DB=postgresql
@@ -13,4 +13,4 @@ script:
   - bundle exec rspec spec/
 
 before_script:
-  - "psql -c 'create database myapp_test;' -U postgres"
+  - "psql -c 'create database cstor_test;' -U postgres"
