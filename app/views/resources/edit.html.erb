@@ -1,0 +1,25 @@
+<%=form_for @resource do |f| %>
+
+<p>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+</p>
+
+<p> <%=f.label :abstract%><br>
+  <%= f.text_area :abstract %>
+</p>
+
+<p>
+<%= f.label :url %><br>
+<%= f.text_field :url %>
+</p>
+
+<p>
+  <%= f.check_box :teacher_only %>
+  <%= f.label :teacher_only, "Teachers Only" %>
+</p>
+
+<p>
+<%= f.submit %>
+</p>
+<% end %>
