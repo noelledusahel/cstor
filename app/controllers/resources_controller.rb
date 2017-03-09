@@ -33,17 +33,33 @@ class ResourcesController < ApplicationController
     end
   end
 
-
-
-  private
-
-  def resource_params
-    params.require(:resource).permit(:title, :abstract, :url, :teacher_only)
+  def edit
+   @resource = Resource.find(params[:id])
   end
 
-  def tag_params
-    params.require(:resource).permit(:tag)
+  def update
+    @resource = Resource.find(params[:id])
+    @resource.update_attributes(resource_params)
+    redirect_to resource_path(@resource)
   end
 
+ def destroy
+  if current_user.admin == true
+    @resource = Resource.find(params[:id])
+    @resource.destroy
+  end
+
+  redirect_to resources_path
+end
+
+private
+
+def resource_params
+  params.require(:resource).permit(:title, :abstract, :url, :teacher_only)
+end
+  
+def tag_params
+  params.require(:resource).permit(:tag)
+end
 
 end
