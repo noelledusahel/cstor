@@ -1,0 +1,17 @@
+<h1> <%= @tag.name.capitalize %> </h1>
+<hr>
+
+<% @resources.each do |resource| %>
+  <h2><%= resource.title.capitalize %> </h2>
+  <p>
+    <b>abstract:</b><br>
+    <%= resource.abstract %> </p>
+  <p>
+    <b>Link:</b><br>
+    <a href="<%= resource.url %>"><%= resource.url%> </a>
+  </p>
+  <p> <b>Author:</b> <em><%= resource.teacher.username %></em> </p>
+
+  <p> added on: <%=resource.created_at.strftime("%m-%d-%Y")  %></p>
+
+<% end %>
