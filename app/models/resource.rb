@@ -18,6 +18,6 @@ class Resource < ActiveRecord::Base
   end
 
   def self.secret_list
-    self.select{|r| r.viewable_by_student?}
+    self.select{|r| r.viewable_by_student? == false}
   end
 end

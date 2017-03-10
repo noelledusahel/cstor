@@ -1,12 +1,17 @@
 class ResourcesController < ApplicationController
   def index
-    @resources = Resource.order(updated_at: :desc)
+    @resources = Resource.all.order(updated_at: :desc)
+    @resources = @resources.page(params[:page]).per(5)
   end
 
   def secretindex
     @resources = Resource.order(updated_at: :desc)
-    @resources = @resources.secret_list
-    render 'secret_index'
+    if current_user.admin == true
+      @resources = @resources.secret_list
+      render 'secret_index'
+    else
+      redirect_to '/'
+    end
   end
 
   def show
