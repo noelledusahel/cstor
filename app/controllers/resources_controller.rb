@@ -58,6 +58,7 @@ class ResourcesController < ApplicationController
 
   def update
     @resource = Resource.find(params[:id])
+    @resource.arrayify_string(tag_params[:tag], @resource)
     @resource.update_attributes(resource_params)
     if @resource.save
       redirect_to resource_path(@resource)
