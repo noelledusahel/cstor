@@ -19,28 +19,18 @@
 			</div>
 
 			<div class="form-group">
-				<%= f.check_box :teacher_only, class: 'form-inline'  %>
-				<%= f.label :teacher_only, "Teachers Only", class: "col-sm-2 control-label" %>
-			</div>
-
-			<div class="form-group">
 				<%= f.label :tags, class: "col-sm-2 control-label" %> <small>(separate by commas)</small> <br>
 				<input id="resource_tag" name="resource[tag]" type="text">
 			</div>
 
-			<p>
-			  <%= f.check_box :teacher_only %>
-			  <%= f.label :teacher_only, "Teachers Only" %>
-			</p>
+			<div class="form-group">
+				<%= f.check_box :teacher_only, class: 'form-inline'  %>
+				<%= f.label :teacher_only, "Teachers Only", class: "col-sm-2 control-label" %>
+			</div>
 
-			<p>
-			<%= f.label :tags %> <small>(separate by commas)</small> <br>
-			<input id="resource_tag" name="resource[tag]" type="text" %>">
-			</p>
-
-			<p>
-			<%= f.submit %>
-			</p>
+			<div class="form-group col-sm-2 control-label">
+				<%= f.submit %>
+			</div>
 
 		<% end %>
 	</span>
