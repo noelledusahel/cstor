@@ -1,8 +1,49 @@
-<h1> Cstor </h1>
+<div class="container-fluid">
 
-<div class="pagination">
-<%= paginate @resources %>
-</div>
+
+    Tags:<%= render partial: "tags/tagmenu" %><br><br>
+<hr>
+
+
+  <% if current_user && current_user.admin %>
+  <p><%= link_to 'Create New Resource', new_resource_path %></p>
+  <p><%= link_to 'Teacher Learning Resources', secret_path %></p>
+  <% end %>
+
+  <div class="panel panel-default">
+    <% @resources.each do |resource| %>
+    <% if resource.viewable_by_student? %>
+    <div class="panel-heading">
+      <h3 class="panel-title"><a href="/resources/<%= resource.id%>"><%= resource.title %></a> </h3>
+
+    </div>
+    <div class="panel-body">
+      <p> <%= resource.abstract %> </p>
+      <p> <em><%= resource.teacher.username %></em> </p>
+
+      <% if !resource.likers.include?(current_user)%>
+
+      <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
+      <%= f.submit "Like" %>
+      <% end %>
+
+      <% else %>
+
+      <% if resource.like_by_user(current_user) != nil %>
+      <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
+      <%= f.submit "Unlike" %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="pagination">
+    <%= paginate @resources %>
+  </div>
 <!-- .pagination {
      float: center !important;
      display: block;
@@ -10,42 +51,9 @@
      margin: 20px 0;
      border-radius: 4px;
  }
- -->
-Tags:<%= render partial: "tags/tagmenu" %><br><br>
+-->
+</div>
 
-<% if current_user && current_user.admin %>
-  <p><%= link_to 'Create New Resource', new_resource_path %></p>
-  <p><%= link_to 'Teacher Learning Resources', secret_path %></p>
-<% end %>
-
-<ul class="all-resources">
-  <% @resources.each do |resource| %>
-    <% if resource.viewable_by_student? %>
-      <p>
-        <h2>
-          <a href="/resources/<%= resource.id%>"><%= resource.title %></a>
-        </h2>
-      </p>
-      <p> <%= resource.abstract %> </p>
-      <p> <em><%= resource.teacher.username %></em> </p>
-
-        <% if !resource.likers.include?(current_user)%>
-
-          <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
-          <%= f.submit "Like" %>
-          <% end %>
-
-        <% else %>
-
-          <% if resource.like_by_user(current_user) != nil %>
-            <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
-            <%= f.submit "Unlike" %>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-  <% end %>
-</ul>
 
 
 
