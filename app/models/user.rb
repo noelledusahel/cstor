@@ -7,8 +7,4 @@ class User < ActiveRecord::Base
 
   validates :username, :email, presence: true
   validates :email, uniqueness: true
-
-  # def user_likes(current_user, resource_id)
-  #   likes.find(:first, :conditions => ['user_id = ? AND post_id = ?', current_user, post_id] ).nil?
-  # end
 end
