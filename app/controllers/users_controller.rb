@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to resources_path
     else
-      render 'new'
+      @errors = @user.errors.full_messages
+      render "new"
     end
   end
 
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
       set_user(@user)
       redirect_to resources_path
     else
+      @errors = @user.errors.full_messages
       render 'new'
     end
   end

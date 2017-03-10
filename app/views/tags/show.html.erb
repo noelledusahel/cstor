@@ -1,17 +1,29 @@
 <h1> <%= @tag.name.capitalize %> </h1>
 <hr>
 
-<% @resources.each do |resource| %>
-  <h2><%= resource.title.capitalize %> </h2>
+<ul class="all-resources">
+  <% @resources.each do |resource| %>
   <p>
-    <b>abstract:</b><br>
-    <%= resource.abstract %> </p>
-  <p>
-    <b>Link:</b><br>
-    <a href="<%= resource.url %>"><%= resource.url%> </a>
+    <h2>
+      <a href="/resources/<%= resource.id%>"><%= resource.title %></a>
+    </h2>
   </p>
-  <p> <b>Author:</b> <em><%= resource.teacher.username %></em> </p>
+  <p> <%= resource.abstract %> </p>
+  <p> <em><%= resource.teacher.username %></em> </p>
 
-  <p> added on: <%=resource.created_at.strftime("%m-%d-%Y")  %></p>
+    <% if !resource.likers.include?(current_user)%>
 
-<% end %>
+      <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
+      <%= f.submit "Like" %>
+      <% end %>
+
+    <% else %>
+
+      <% if resource.like_by_user(current_user) != nil %>
+        <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
+        <%= f.submit "Unlike" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

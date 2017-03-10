@@ -1,3 +1,5 @@
+<%= render partial: '/users/errors' %>
+
 <%=form_for :resource, url: resources_path do |f| %>
 
 <p>
@@ -21,7 +23,7 @@
 
 <p>
 <%= f.label :tags %> <small>(separate by commas)</small> <br>
-<%= f.text_field :tag %>
+<input id="resource_tag" name="resource[tag]" type="text">
 </p>
 
 <p>
