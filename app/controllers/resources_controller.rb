@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
 
   def index
     @resources = Resource.all.order(updated_at: :desc)
-    @resources = @resources.page(params[:page]).per(5)
+    @resources = @resources.page(params[:page]).per(8)
   end
 
   def secretindex
