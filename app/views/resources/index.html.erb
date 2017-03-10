@@ -3,8 +3,9 @@
 Tags:<%= render partial: "tags/tagmenu" %><br><br>
 
 <% if current_user && current_user.admin %>
-  <%= link_to 'Create New Resource', new_resource_path %>
+<%= link_to 'Create New Resource', new_resource_path %>
 <% end %>
+
 <ul class="all-resources">
   <% @resources.each do |resource| %>
   <p>
@@ -15,20 +16,20 @@ Tags:<%= render partial: "tags/tagmenu" %><br><br>
   <p> <%= resource.abstract %> </p>
   <p> <em><%= resource.teacher.username %></em> </p>
 
-  <% if !resource.likers.include?(current_user)%>
+    <% if !resource.likers.include?(current_user)%>
 
-  <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
-  <%= f.submit "Like" %>
-  <% end %>
+      <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
+      <%= f.submit "Like" %>
+      <% end %>
 
-  <% else %>
+    <% else %>
 
-  <% if resource.like_by_user(current_user) != nil %>
-  <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
-  <%= f.submit "Unlike" %>
-  <% end %>
-  <% end %>
-  <% end %>
+      <% if resource.like_by_user(current_user) != nil %>
+        <%= form_for [resource, resource.like_by_user(current_user)], method: :delete do |f| %>
+        <%= f.submit "Unlike" %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 </ul>
 
