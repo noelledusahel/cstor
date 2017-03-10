@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
 
       redirect_to resources_path
     else
-      redirect_to new_session_path
+      @errors = ["Login failed."]
+      render 'new'
     end
   end
 
