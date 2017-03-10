@@ -1,4 +1,5 @@
 class ResourcesController < ApplicationController
+
   def index
     @resources = Resource.all.order(updated_at: :desc)
     @resources = @resources.page(params[:page]).per(5)
@@ -30,16 +31,18 @@ class ResourcesController < ApplicationController
   def create
     @resource = current_user.resources.new(resource_params)
     if @resource.save && current_user.admin
-      tags = tag_params[:tag].split(',').map! {|tag| tag.lstrip}
-      tags.each do |tag|
-        if Tag.find_by(name: tag)
-          @resource.tags << Tag.find_by(name: tag)
-        else
-          @resource.tags << Tag.create(name: tag)
-        end
-      end
+      # tags = tag_params[:tag].split(',').map! {|tag| tag.lstrip}
+      # tags.each do |tag|
+      #   if Tag.find_by(name: tag)
+      #     @resource.tags << Tag.find_by(name: tag)
+      #   else
+      #     @resource.tags << Tag.create(name: tag)
+      #   end
+      # end
+      @resource.arrayify_string(tag_params[:tag], @resource)
       redirect_to @resource, notice: "Your Resource was a success!"
     else
+      @tags = tag_params[:tag]
       @errors = @resource.errors.full_messages
       render :new, status: 400
     end
@@ -50,6 +53,7 @@ class ResourcesController < ApplicationController
       redirect_to resource_path
     end
    @resource = Resource.find(params[:id])
+   @tags_string = @resource.stringify_tags(@resource.tags)
   end
 
   def update
