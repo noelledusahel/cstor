@@ -13,6 +13,7 @@ class Resource < ActiveRecord::Base
     self.likes.find_by(liker_id: user.id)
   end
 
+
   def stringify_tags(tags_array)
     word = ""
     tags_array.each_with_index do |tag, index|
@@ -36,4 +37,11 @@ class Resource < ActiveRecord::Base
     end
   end
 
+  def viewable_by_student?
+    self.teacher_only == false
+  end
+
+  def self.secret_list
+    self.select{|r| r.viewable_by_student? == false}
+  end
 end
