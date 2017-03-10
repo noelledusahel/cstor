@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
-    find_user
+    @show_user = find_user
+    if @show_user.admin && !current_user.admin
+      redirect_to resources_path
+    end
   end
 
   def admin_new
