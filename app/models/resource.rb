@@ -13,5 +13,11 @@ class Resource < ActiveRecord::Base
     self.likes.find_by(liker_id: user.id)
   end
 
+  def viewable_by_student?
+    self.teacher_only == false
+  end
 
+  def self.secret_list
+    self.select{|r| r.viewable_by_student? == false}
+  end
 end

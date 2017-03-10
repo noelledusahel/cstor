@@ -2,13 +2,24 @@ class ResourcesController < ApplicationController
   def index
     @resources = Resource.all.order(updated_at: :desc)
     @resources = @resources.page(params[:page]).per(5)
-  end 
+  end
+
+  def secretindex
+    @resources = Resource.order(updated_at: :desc)
+    if current_user.admin == true
+      @resources = @resources.secret_list
+      render 'secret_index'
+    else
+      redirect_to '/'
+    end
+  end
 
   def show
     @resource = Resource.find(params[:id])
     @tags = @resource.tags
     @likes = @resource.likes
   end
+
 
   def new
     if !current_user.admin
