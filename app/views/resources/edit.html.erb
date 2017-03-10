@@ -1,4 +1,4 @@
-<%=form_for :resource, url: resources_path do |f| %>
+<%=form_for @resource do |f| %>
 
 <p>
   <%= f.label :title %><br>
@@ -17,11 +17,6 @@
 <p>
   <%= f.check_box :teacher_only %>
   <%= f.label :teacher_only, "Teachers Only" %>
-</p>
-
-<p>
-<%= f.label :tags %> <small>(separate by commas)</small> <br>
-<%= f.text_field :tag %>
 </p>
 
 <p>

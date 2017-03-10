@@ -29,7 +29,11 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # gem 'pry-byebug'
+
 gem 'rake'
+gem 'rake' , '~> 12.0.0'
+
+
 
 group :development, :test do
   gem 'rspec-rails'
