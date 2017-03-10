@@ -1,27 +1,18 @@
 <div class="container-fluid">
-  Tags:<%= render partial: "tags/tagmenu" %><br><br>
 
-  <div class="pagination">
-    <%= paginate @resources %>
-  </div>
-<!-- .pagination {
-     float: center !important;
-     display: block;
-     padding-left: 0;
-     margin: 20px 0;
-     border-radius: 4px;
- }
--->
-Tags:<%= render partial: "tags/tagmenu" %><br><br>
 
-<% if current_user && current_user.admin %>
-<p><%= link_to 'Create New Resource', new_resource_path %></p>
-<p><%= link_to 'Teacher Learning Resources', secret_path %></p>
-<% end %>
+    Tags:<%= render partial: "tags/tagmenu" %><br><br>
+<hr>
 
-  <% @resources.each do |resource| %>
-  <% if resource.viewable_by_student? %>
+
+  <% if current_user && current_user.admin %>
+  <p><%= link_to 'Create New Resource', new_resource_path %></p>
+  <p><%= link_to 'Teacher Learning Resources', secret_path %></p>
+  <% end %>
+
   <div class="panel panel-default">
+    <% @resources.each do |resource| %>
+    <% if resource.viewable_by_student? %>
     <div class="panel-heading">
       <h3 class="panel-title"><a href="/resources/<%= resource.id%>"><%= resource.title %></a> </h3>
 
@@ -44,10 +35,24 @@ Tags:<%= render partial: "tags/tagmenu" %><br><br>
       <% end %>
       <% end %>
       <% end %>
-      <% end %>
+
     </div>
     <% end %>
+    <% end %>
   </div>
+
+  <div class="pagination">
+    <%= paginate @resources %>
+  </div>
+<!-- .pagination {
+     float: center !important;
+     display: block;
+     padding-left: 0;
+     margin: 20px 0;
+     border-radius: 4px;
+ }
+-->
+</div>
 
 
 
