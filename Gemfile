@@ -31,8 +31,12 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'pry-byebug'
 
 gem 'rake' , '~> 12.0.0'
+<<<<<<< HEAD
 
 gem 'bootstrap_form'
+
+gem 'kaminari'
+
 
 
 group :development, :test do

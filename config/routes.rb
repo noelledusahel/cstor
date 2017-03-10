@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :resources
 
+  get '/secret', to: 'resources#secretindex'
+
   resources :tags, only: [:new, :create, :show]
 
   root 'resources#index'
