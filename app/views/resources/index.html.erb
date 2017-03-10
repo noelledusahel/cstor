@@ -1,5 +1,16 @@
 <h1> Cstor </h1>
 
+<div class="pagination">
+<%= paginate @resources %>
+</div>
+<!-- .pagination {
+     float: center !important;
+     display: block;
+     padding-left: 0;
+     margin: 20px 0;
+     border-radius: 4px;
+ }
+ -->
 Tags:<%= render partial: "tags/tagmenu" %><br><br>
 
 <% if current_user && current_user.admin %>
@@ -32,4 +43,6 @@ Tags:<%= render partial: "tags/tagmenu" %><br><br>
     <% end %>
   <% end %>
 </ul>
+
+
 

@@ -13,4 +13,5 @@ class Resource < ActiveRecord::Base
     self.likes.find_by(liker_id: user.id)
   end
 
+
 end
