@@ -19,7 +19,4 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_to path
   end
-
-
-
 end
