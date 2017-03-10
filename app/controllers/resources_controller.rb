@@ -3,11 +3,18 @@ class ResourcesController < ApplicationController
     @resources = Resource.order(updated_at: :desc)
   end
 
+  def secretindex
+    @resources = Resource.order(updated_at: :desc)
+    @resources = @resources.secret_list
+    render 'secret_index'
+  end
+
   def show
     @resource = Resource.find(params[:id])
     @tags = @resource.tags
     @likes = @resource.likes
   end
+
 
   def new
     if !current_user.admin
