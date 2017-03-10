@@ -20,6 +20,11 @@
 </p>
 
 <p>
+<%= f.label :tags %> <small>(separate by commas)</small> <br>
+<input id="resource_tag" name="resource[tag]" value="<%= @tags_string %>">
+</p>
+
+<p>
 <%= f.submit %>
 </p>
 <% end %>

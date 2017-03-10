@@ -13,4 +13,27 @@ class Resource < ActiveRecord::Base
     self.likes.find_by(liker_id: user.id)
   end
 
+  def stringify_tags(tags_array)
+    word = ""
+    tags_array.each_with_index do |tag, index|
+      if index+1 == tags_array.length
+        word << tag.name
+      else
+        word << "#{tag.name}, "
+      end
+    end
+    word
+  end
+
+  def arrayify_string(string, resource)
+    tags = string.split(',').map! {|tag| tag.lstrip}
+    tags.each do |tag|
+      if Tag.find_by(name: tag)
+        resource.tags << Tag.find_by(name: tag)
+      else
+        resource.tags << Tag.create(name: tag)
+      end
+    end
+  end
+
 end
