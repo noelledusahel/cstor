@@ -1,16 +1,15 @@
 <div class="container-fluid">
 
 
-    Tags:<%= render partial: "tags/tagmenu" %><br><br>
-<hr>
-
+  Tags:<%= render partial: "tags/tagmenu" %><br><br>
+  <hr>
 
   <% if current_user && current_user.admin %>
   <p><%= link_to 'Create New Resource', new_resource_path %></p>
   <p><%= link_to 'Teacher Learning Resources', secret_path %></p>
   <% end %>
 
-  <div class="panel panel-default">
+  <div class="panel panel-info">
     <% @resources.each do |resource| %>
     <% if resource.viewable_by_student? %>
     <div class="panel-heading">
@@ -20,7 +19,7 @@
     <div class="panel-body">
       <p> <%= resource.abstract %> </p>
       <p> <em><%= resource.teacher.username %></em> </p>
-
+      <% if logged_in? %>
       <% if !resource.likers.include?(current_user)%>
 
       <%= form_for :like, url: "/resources/#{resource.id}/likes" do |f| %>
@@ -35,7 +34,7 @@
       <% end %>
       <% end %>
       <% end %>
-
+      <% end %>
     </div>
     <% end %>
     <% end %>
@@ -44,14 +43,7 @@
   <div class="pagination">
     <%= paginate @resources %>
   </div>
-<!-- .pagination {
-     float: center !important;
-     display: block;
-     padding-left: 0;
-     margin: 20px 0;
-     border-radius: 4px;
- }
--->
+
 </div>
 
 
