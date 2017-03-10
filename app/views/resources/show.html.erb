@@ -13,8 +13,10 @@
 
   <p> added on: <%=@resource.created_at.strftime("%m-%d-%Y")  %></p>
 
+<% if current_user.admin %>
   <%= form_for @resource, method: :delete do |f| %>
   <%= f.submit "Delete" %>
   <% end %>
 
 <%= link_to 'Update Resource', edit_resource_path %>
+<% end  %>
