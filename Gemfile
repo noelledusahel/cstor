@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'pry-byebug'
 
 gem 'rake' , '~> 12.0.0'
-
+gem 'kaminari'
 
 
 group :development, :test do

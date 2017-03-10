@@ -1,9 +1,20 @@
 <h1> Cstor </h1>
 
+<div class="pagination">
+<%= paginate @resources %>
+</div>
+<!-- .pagination {
+     float: center !important;
+     display: block;
+     padding-left: 0;
+     margin: 20px 0;
+     border-radius: 4px;
+ }
+ -->
 Tags:<%= render partial: "tags/tagmenu" %><br><br>
 
 <% if current_user && current_user.admin %>
-  <%= link_to 'Create New Resource', new_resource_path %>
+<%= link_to 'Create New Resource', new_resource_path %>
 <% end %>
 <ul class="all-resources">
   <% @resources.each do |resource| %>
@@ -31,4 +42,6 @@ Tags:<%= render partial: "tags/tagmenu" %><br><br>
   <% end %>
   <% end %>
 </ul>
+
+
 
