@@ -1,7 +1,7 @@
 <div class="container-fluid">
-<h1><%= @show_user.username %>'s Profile</h1>
-  <h2> Saved resources:</h2>
-  <div class="panel panel-default">
+  <h2><%= @show_user.username %>'s Profile</h2>
+  <h3> Saved resources:</h3>
+  <div class="panel panel-info">
     <% @user.liked_resources.each do |resource| %>
     <div class="panel-heading">
       <h3 class="panel-title"><a href="/resources/<%= resource.id%>"><%= resource.title %></a></h3>
