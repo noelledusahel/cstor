@@ -13,10 +13,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    puts "\n" * 10
+    path = URI(request.referer).path
     @like = Like.find_by(liker_id: current_user.id, resource_id: params[:resource_id])
     @like.destroy
-    redirect_to resources_path
+    redirect_to path
   end
-
-
 end
