@@ -1,5 +1,6 @@
+<div class="container-fluid">
 <h1> <%= @tag.name.capitalize %> </h1>
-<hr>
+<br>
 
 <% @resources.each do |resource| %>
   <h2><%= resource.title.capitalize %> </h2>
@@ -15,3 +16,5 @@
   <p> added on: <%=resource.created_at.strftime("%m-%d-%Y")  %></p>
 
 <% end %>
+</div>
+

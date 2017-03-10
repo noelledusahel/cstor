@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rake' , '~> 12.0.0'
 
+gem 'bootstrap_form'
 
 
 group :development, :test do

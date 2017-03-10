@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h1> <%= @resource.title.capitalize %> </h1>
 <% @tags.each do |tag| %>
 <button><%= link_to tag.name, tag_path(tag) %></button>
@@ -20,3 +21,4 @@
 
 <%= link_to 'Update Resource', edit_resource_path %>
 <% end  %>
+</div>
