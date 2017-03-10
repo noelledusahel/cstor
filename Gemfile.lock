@@ -156,11 +156,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.1.4)
-  HEAD
-  rake
-=======
   rake (~> 12.0.0)
-  refs/remotes/origin/master
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
