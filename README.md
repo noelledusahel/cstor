@@ -2,20 +2,9 @@
 
 Members
 -------------
-Noelle Barber
+Noelle Barber 
 Ryan Landgren
 Sarah Dudek
 Avril Dunleavy
 
-MVP: Wednesday
----------------
-User Registration
-User Login
-User can view resources index with title &  abstract
-User can view resource show page with title, abstract and external URL
-User with admin priviledge can add a resource
-
-
-MVP: Thursday
--------------
-Everything else 
+CSTOR allows teachers to author, share and tag resources for students and fellow educators. Teachers sign up as admins with an url that is shred and restricted to educators, and Students proceed with the standard user registration process. Student privileges allow users to create a profile, and like (or bookmark) resources for later viewing on their profile page. 
