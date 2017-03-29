@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="panel panel-default">
+  <div class="panel panel-info">
    <div class="panel-heading">
 <h3 class="panel-title"><%= @resource.title.capitalize %> </h3>
    </div>
@@ -19,7 +19,7 @@
 
   <p> added on: <%=@resource.created_at.strftime("%m-%d-%Y")  %></p>
 
-<% if current_user.admin %>
+<% if current_user && current_user.admin %>
   <%= form_for @resource, method: :delete do |f| %>
   <%= f.submit "Delete" %>
   <% end %>
